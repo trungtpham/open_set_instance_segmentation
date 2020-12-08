@@ -7,11 +7,12 @@ load map_imageId_filename
 load coco_val_img_ids
 
 %% Path to coco data
-data_path = 'datasets/ms_coco_samples/';
+%data_path = 'datasets/ms_coco_samples/';
+data_path = '../data/';
 images_files = dir(strcat(data_path, 'images'));
 images_files(1:2) = [];
 
-for img_idx=1:length(images_files)
+for img_idx=25:length(images_files)
     fprintf('segmenting image... %d \n', img_idx);
     %% Get filename
     img_filename = images_files(img_idx).name;
@@ -76,5 +77,7 @@ for img_idx=1:length(images_files)
     figure(1);imshow(seg_color);
     drawnow;
     pause;
+    %img_output_file = strcat('../output/', num2str(img_idx), '.png');
+    %imwrite(seg_color, img_output_file);
 end
 

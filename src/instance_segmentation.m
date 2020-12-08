@@ -41,7 +41,7 @@ end
 
 %% Run Monte Carlo simulation
 if num_objects > 0 && strcmp(optimiser, 'mc')
-    temperature = 100;
+    temperature = 10;
     decay = 0.99;
     max_iterations = max(1000,num_objects*10);
     params.max_iterations = max_iterations;

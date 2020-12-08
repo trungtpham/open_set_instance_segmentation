@@ -31,7 +31,8 @@ det_confidences = repmat(detections.scores, 1, num_nodes);
 
 box_model_scores = log(det_confidences).*region_areas... 
                  + iou_fitness_scores...   
-                 + box_center_fitness_scores + region_center_fitness_scores;
+                 + 0.5.*box_center_fitness_scores...
+                 + 0.75.*region_center_fitness_scores;
 box_model_scores = box_model_scores';
 iou_mat = iou_mat';
 

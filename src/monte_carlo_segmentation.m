@@ -6,7 +6,7 @@ function [segmentation, node_binary_labels, node_instance_labels, iou_matrix, fe
     tree, features, segmentation_energies, detections, iou_mat, init_seg, params)
                                                                                 
 % Control random seed
-rng(1);
+%rng(1);
 
 %% Compute nodes' parents
 child_father_tab = zeros(length(tree), 1);

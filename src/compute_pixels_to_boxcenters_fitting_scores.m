@@ -8,13 +8,14 @@ W = im_size(2);
 % Compute detection box centers and radii
 det_cx = det_bboxes(:,1) + 0.5.*det_bboxes(:,3);
 det_cy = det_bboxes(:,2) + 0.5.*det_bboxes(:,4);
-det_rx = (0.5*det_bboxes(:,3)).^1.0;
-det_ry = (0.5*det_bboxes(:,4)).^1.0;
+det_rx = (0.5*det_bboxes(:,3));
+det_ry = (0.5*det_bboxes(:,4));
 
 % Compute normalize distances from pixel locations to box centers
 xdist = pdist2(det_cx, px, 'squaredeuclidean')./repmat(2.*(det_rx.^2), 1, W*H);
 ydist = pdist2(det_cy, py, 'squaredeuclidean')./repmat(2.*(det_ry.^2), 1, W*H);
 spdist = xdist + ydist;
+spdist(spdist > 1.1) = 1.e2;
 scores = -reshape(spdist, [num_dets, W*H]);
 
 end
